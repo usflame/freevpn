@@ -66,12 +66,12 @@
             left: 0;
             width: 150vw;
             height: 150vh;
-            background: linear-gradient(45deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1), rgba(175, 82, 222, 0.1));
+            background: linear-gradient(45deg, rgba(0, 122, 255, 0.2), rgba(88, 86, 214, 0.2), rgba(175, 82, 222, 0.2));
             background-size: 300% 300%;
             animation: gradientAnimation 30s ease infinite;
             z-index: -1;
-            filter: blur(180px);
-            opacity: 0.7;
+            filter: blur(200px);
+            opacity: 0.8;
         }
 
         @keyframes gradientAnimation {
@@ -390,15 +390,35 @@
             color: var(--apple-link-color);
         }
 
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .donation-notification {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--apple-card-bg);
-            color: var(--apple-text-primary);
-            padding: 20px 25px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            background-color: rgba(44, 44, 46, 0.85);
+            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -406,22 +426,23 @@
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out, transform 0.5s ease-out;
-            max-width: 350px;
+            transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out;
+            max-width: 400px;
+            width: 90%;
+            box-sizing: border-box;
             text-align: center;
         }
 
         .donation-notification.show {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .donation-notification.hide {
             opacity: 0;
             visibility: hidden;
-            transform: translateY(20px);
+            transform: translate(-50%, -50%) scale(0.95);
         }
 
         .donation-notification p {
@@ -531,10 +552,12 @@
                 padding: 10px 15px;
             }
             .donation-notification {
-                bottom: 15px;
-                right: 15px;
-                left: 15px;
-                max-width: unset;
+                bottom: unset; /* Remove bottom */
+                right: unset; /* Remove right */
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%); /* Re-center for mobile */
+                max-width: 90%; /* Adjust max-width for smaller screens */
             }
             .donation-notification p {
                 font-size: 1em;
@@ -654,14 +677,15 @@
         </div>
     </footer>
 
+    <div class="modal-overlay" id="modal-overlay"></div>
     <div class="donation-notification" id="donation-notification">
-        <p data-key="donation_text"></p>
-        <a href="https://donate.lioracloud.com/freevpn" target="_blank" rel="noopener noreferrer" class="donation-button" data-key="donation_button_text"></a>
         <button class="close-button" id="close-donation-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </button>
+        <p data-key="donation_text"></p>
+        <a href="https://donate.lioracloud.com/freevpn" target="_blank" rel="noopener noreferrer" class="donation-button" data-key="donation_button_text"></a>
     </div>
 
     <script>
@@ -871,6 +895,10 @@
         const languageSelect = document.getElementById('language-select');
         const donationNotification = document.getElementById('donation-notification');
         const closeDonationBtn = document.getElementById('close-donation-btn');
+        const modalOverlay = document.getElementById('modal-overlay');
+
+        const DONATION_POPUP_KEY = 'lioracloud_donation_popup_hidden_until';
+        const TWO_HOURS_MS = 2 * 60 * 60 * 1000;
 
         function applyLanguage(lang) {
             document.querySelectorAll('[data-key]').forEach(element => {
@@ -910,13 +938,36 @@
             applyLanguage(newLang);
         });
 
-        window.addEventListener('load', () => {
+        function showDonationPopup() {
+            modalOverlay.classList.add('show');
             donationNotification.classList.add('show');
+            donationNotification.classList.remove('hide');
+        }
+
+        function hideDonationPopup() {
+            modalOverlay.classList.remove('show');
+            donationNotification.classList.remove('show');
+            donationNotification.classList.add('hide');
+            localStorage.setItem(DONATION_POPUP_KEY, Date.now() + TWO_HOURS_MS);
+        }
+
+        window.addEventListener('load', () => {
+            const hiddenUntil = localStorage.getItem(DONATION_POPUP_KEY);
+            const now = Date.now();
+
+            if (!hiddenUntil || now >= parseInt(hiddenUntil, 10)) {
+                showDonationPopup();
+            }
         });
 
         closeDonationBtn.addEventListener('click', () => {
-            donationNotification.classList.remove('show');
-            donationNotification.classList.add('hide');
+            hideDonationPopup();
+        });
+
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                hideDonationPopup();
+            }
         });
     </script>
 
