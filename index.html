@@ -1,7 +1,3 @@
-// This is your Cloudflare Worker script.
-// It will serve the HTML content when a request hits the Worker's route.
-
-const htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +7,11 @@ const htmlContent = `
     
     <meta name="description" content="Experience complete online security and anonymity with LioraCloud's free VPN. Enjoy fast, reliable connections without hidden costs. Get your free VPN today!">
     <meta name="keywords" content="free VPN, LioraCloud VPN, secure VPN, anonymous VPN, fast VPN, privacy, online security, free proxy, bypass geo-restrictions">
-    <link rel="canonical" href="https://your-worker-domain.com"> <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-worker-domain.com"> <meta property="og:title" content="Free VPN by LioraCloud - Secure, Fast, Free">
+    <link rel="canonical" href="https://your-domain.com"> <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com"> <meta property="og:title" content="Free VPN by LioraCloud - Secure, Fast, Free">
     <meta property="og:description" content="Experience complete online security and anonymity with LioraCloud's free VPN. Enjoy fast, reliable connections without hidden costs.">
     <meta property="og:image" content="https://cdn.liora.my/lioracloud.com/img/bv2.png"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://your-worker-domain.com"> <meta property="twitter:title" content="Free VPN by LioraCloud - Secure, Fast, Free">
+    <meta property="twitter:url" content="https://your-domain.com"> <meta property="twitter:title" content="Free VPN by LioraCloud - Secure, Fast, Free">
     <meta property="twitter:description" content="Experience complete online security and anonymity with LioraCloud's free VPN. Enjoy fast, reliable connections without hidden costs.">
     <meta property="twitter:image" content="https://cdn.liora.my/lioracloud.com/img/bv2.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -425,19 +421,3 @@ const htmlContent = `
     </footer>
 </body>
 </html>
-`;
-
-// Event listener for incoming requests
-addEventListener('fetch', event => {
-    event.respondWith(handleRequest(event.request));
-});
-
-async function handleRequest(request) {
-    // For a simple static page, we just return the HTML content.
-    // We set the Content-Type header to ensure browsers interpret it as HTML.
-    return new Response(htmlContent, {
-        headers: {
-            'Content-Type': 'text/html;charset=UTF-8',
-        },
-    });
-}
