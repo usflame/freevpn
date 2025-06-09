@@ -7,15 +7,24 @@
     
     <meta name="description" content="Experience complete online security and anonymity with LioraCloud's free VPN. Enjoy fast, reliable connections without hidden costs. Get your free VPN today!">
     <meta name="keywords" content="free VPN, LioraCloud VPN, secure VPN, anonymous VPN, fast VPN, privacy, online security, free proxy, bypass geo-restrictions">
-    <link rel="canonical" href="https://your-domain.com"> <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-domain.com"> <meta property="og:title" content="Free VPN by LioraCloud - Secure, Fast, Free">
+    <link rel="canonical" href="https://your-domain.com"> <!-- ВАЖНО: ОБНОВИТЕ ЭТОТ URL НА ВАШ ДОМЕН -->
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com"> <!-- ВАЖНО: ОБНОВИТЕ ЭТОТ URL НА ВАШ ДОМЕН -->
+    <meta property="og:title" content="Free VPN by LioraCloud - Secure, Fast, Free">
     <meta property="og:description" content="Experience complete online security and anonymity with LioraCloud's free VPN. Enjoy fast, reliable connections without hidden costs.">
-    <meta property="og:image" content="https://cdn.liora.my/lioracloud.com/img/bv2.png"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://your-domain.com"> <meta property="twitter:title" content="Free VPN by LioraCloud - Secure, Fast, Free">
+    <meta property="og:image" content="https://cdn.liora.my/lioracloud.com/img/bv2.png"> <!-- Пример, можно заменить на иконку VPN -->
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com"> <!-- ВАЖНО: ОБНОВИТЕ ЭТОТ URL НА ВАШ ДОМЕН -->
+    <meta property="twitter:title" content="Free VPN by LioraCloud - Secure, Fast, Free">
     <meta property="twitter:description" content="Experience complete online security and anonymity with LioraCloud's free VPN. Enjoy fast, reliable connections without hidden costs.">
-    <meta property="twitter:image" content="https://cdn.liora.my/lioracloud.com/img/bv2.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta property="twitter:image" content="https://cdn.liora.my/lioracloud.com/img/bv2.png"> <!-- Пример, можно заменить на иконку VPN -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" href="https://cdn.liora.my/lioracloud.com/img/icon.png"> <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://cdn.liora.my/lioracloud.com/img/icon.png"> <!-- Ваш текущий favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --apple-green: #34c759;
@@ -30,6 +39,7 @@
             --apple-button-hover-bg: #0060df;
             --cloudflare-orange: #f48020;
             --fastly-red: #e03838;
+            --github-blue: #171515; /* Using a dark color for GitHub */
         }
 
         body {
@@ -46,6 +56,34 @@
             -moz-osx-font-smoothing: grayscale;
             text-align: center;
             overflow-x: hidden;
+            position: relative; /* For background gradient positioning */
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150vw;
+            height: 150vh;
+            background: linear-gradient(45deg, rgba(68, 138, 255, 0.1), rgba(115, 71, 255, 0.1), rgba(255, 64, 129, 0.1), rgba(255, 171, 0, 0.1), rgba(56, 142, 60, 0.1));
+            background-size: 300% 300%;
+            animation: gradientAnimation 30s ease infinite;
+            z-index: -1;
+            filter: blur(150px);
+            opacity: 0.6;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .header {
@@ -109,19 +147,17 @@
         .main-cta-button {
             background-color: var(--apple-button-bg);
             color: var(--apple-text-primary);
-            padding: 18px 35px;
-            border-radius: 999px; /* Pill shape */
+            padding: 14px 28px; /* Adjust padding for Apple style */
+            border-radius: 8px; /* More Apple-like rounded corners */
             text-decoration: none;
-            font-size: 1.2em;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.1s ease;
+            font-size: 1.1em; /* Slightly smaller font size */
+            font-weight: 500; /* Lighter font weight */
+            transition: background-color 0.2s ease; /* Standard Apple hover */
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .main-cta-button:hover {
             background-color: var(--apple-button-hover-bg);
-            transform: translateY(-2px);
         }
 
         .features-section {
@@ -146,6 +182,18 @@
             align-items: flex-start;
             gap: 15px;
         }
+
+        .feature-icon {
+            font-size: 2em; /* Adjust icon size */
+            color: var(--apple-link-color); /* Apple accent color for icons */
+            margin-bottom: 10px;
+        }
+
+        /* Placeholder for Apple-style icons - you might need to use a font icon library or SVGs */
+        .feature-icon.security::before { content: "🔒"; } /* Example: Lock icon */
+        .feature-icon.speed::before { content: "🚀"; } /* Example: Rocket icon */
+        .feature-icon.free::before { content: "🎁"; } /* Example: Gift icon */
+
 
         .feature-card h3 {
             font-size: 1.5em;
@@ -233,11 +281,11 @@
             font-size: 0.9em;
             white-space: normal;
             padding: 0;
-            margin-bottom: 0;
+            margin-bottom: 5px; /* Added a little margin */
         }
 
         .swiss-based-icon {
-            height: 32px;
+            height: 40px; /* Increased by 25% from 32px */
             width: auto;
             vertical-align: middle;
             filter: none;
@@ -257,7 +305,7 @@
             font-size: 0.9em;
             color: var(--apple-text-secondary);
             white-space: nowrap;
-            margin-bottom: 0;
+            margin-bottom: 10px; /* Added a little margin */
         }
 
         .powered-by-footer a {
@@ -273,6 +321,26 @@
 
         .powered-by-footer .fastly-link:hover {
             color: var(--fastly-red);
+        }
+
+        .powered-by-footer .github-link:hover {
+            color: var(--github-blue);
+        }
+
+        .licensing-info {
+            color: var(--apple-text-secondary);
+            font-size: 0.8em;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-info {
+            color: var(--apple-text-secondary);
+            font-size: 0.8em;
+            text-align: center;
+            padding-top: 5px;
         }
 
 
@@ -293,8 +361,8 @@
                 font-size: 1.1em;
             }
             .main-cta-button {
-                padding: 15px 30px;
-                font-size: 1.1em;
+                padding: 12px 24px;
+                font-size: 1.0em;
             }
             .features-section {
                 grid-template-columns: 1fr; /* Stack features vertically */
@@ -357,14 +425,17 @@
 
         <section class="features-section">
             <div class="feature-card">
+                <div class="feature-icon security"></div>
                 <h3>Complete Security & Anonymity</h3>
                 <p>Browse, stream, and communicate with ultimate peace of mind. Our VPN encrypts your connection, masks your IP address, and adheres to a strict no-logs policy, ensuring your online activities remain private and secure from prying eyes.</p>
             </div>
             <div class="feature-card">
+                <div class="feature-icon speed"></div>
                 <h3>Unrivaled Quality & Speed</h3>
                 <p>Powered by our global network and optimized infrastructure (including Cloudflare and Fastly integrations), LioraCloud Free VPN delivers consistently high speeds for seamless Browse, HD streaming, and rapid downloads, no matter where you are.</p>
             </div>
             <div class="feature-card">
+                <div class="feature-icon free"></div>
                 <h3>Truly Free, Forever</h3>
                 <p>We believe everyone deserves secure internet access. LioraCloud's Free VPN is genuinely free, with no hidden fees, bandwidth limits, or annoying ads. Enjoy premium VPN features without ever reaching for your wallet.</p>
             </div>
@@ -406,10 +477,10 @@
         </div>
         <div class="footer-bottom">
             <div class="powered-by-footer">
-                Powered by 
-                <a href="https://www.cloudflare.com?partner=lioracloud" target="_blank" rel="noopener noreferrer" class="cloudflare-link">Cloudflare</a> 
-                & 
-                <a href="https://www.fastly.com/?pr=lioracloud.com" target="_blank" rel="noopener noreferrer" class="fastly-link">Fastly</a>
+                Powered by
+                <a href="https://www.cloudflare.com?partner=lioracloud" target="_blank" rel="noopener noreferrer" class="cloudflare-link">Cloudflare</a>,
+                <a href="https://www.fastly.com/?pr=lioracloud.com" target="_blank" rel="noopener noreferrer" class="fastly-link">Fastly</a>,
+                and <a href="https://github.com/?ref=liora" target="_blank" rel="noopener noreferrer" class="github-link">GitHub</a>
             </div>
             <div class="footer-copyright-group">
                 <p class="footer-copyright-text">
@@ -419,5 +490,15 @@
             </div>
         </div>
     </footer>
+
+    <div class="licensing-info">
+        This page uses the "SF Pro Display" font, which is a trademark of Apple Inc. We believe our use of this font qualifies as fair use for non-commercial purposes related to a non-profit project.
+        <br>
+        We are not affiliated with Apple, Inc. and have no association with their company.
+    </div>
+    <div class="contact-info">
+        For any inquiries regarding abuse, please contact: <a href="mailto:abuse@lioracloud.com">abuse@lioracloud.com</a>
+    </div>
+
 </body>
 </html>
