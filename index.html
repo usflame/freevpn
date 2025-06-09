@@ -35,8 +35,10 @@
             --apple-bg-dark: #1c1c1e;
             --apple-card-bg: #2c2c2e;
             --apple-border-color: rgba(255, 255, 255, 0.1);
-            --apple-button-bg: #007aff;
-            --apple-button-hover-bg: #0060df;
+            --apple-button-gradient-start: #007aff;
+            --apple-button-gradient-end: #3f9eff;
+            --apple-button-hover-gradient-start: #0060df;
+            --apple-button-hover-gradient-end: #007aff;
             --cloudflare-orange: #f48020;
             --fastly-red: #e03838;
             --github-blue: #171515;
@@ -66,12 +68,12 @@
             left: 0;
             width: 150vw;
             height: 150vh;
-            background: linear-gradient(45deg, rgba(0, 122, 255, 0.4), rgba(88, 86, 214, 0.4), rgba(175, 82, 222, 0.4));
-            background-size: 300% 300%;
-            animation: gradientAnimation 30s ease infinite;
+            background: linear-gradient(45deg, rgba(0, 122, 255, 0.6), rgba(88, 86, 214, 0.6), rgba(175, 82, 222, 0.6), rgba(0, 122, 255, 0.6));
+            background-size: 400% 400%;
+            animation: gradientAnimation 40s ease infinite;
             z-index: -1;
-            filter: blur(250px);
-            opacity: 0.8;
+            filter: blur(300px);
+            opacity: 0.9;
         }
 
         @keyframes gradientAnimation {
@@ -186,20 +188,21 @@
             line-height: 1.5;
         }
 
-        .main-cta-button {
-            background-color: var(--apple-button-bg);
+        .main-cta-button, .donation-button {
+            background: linear-gradient(to bottom, var(--apple-button-gradient-start), var(--apple-button-gradient-end));
             color: var(--apple-text-primary);
             padding: 14px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-size: 1.1em;
             font-weight: 500;
-            transition: background-color 0.2s ease;
+            transition: background 0.2s ease; /* Transition for gradient */
             display: inline-block;
+            border: none; /* Ensure no default button border */
         }
 
-        .main-cta-button:hover {
-            background-color: var(--apple-button-hover-bg);
+        .main-cta-button:hover, .donation-button:hover {
+            background: linear-gradient(to bottom, var(--apple-button-hover-gradient-start), var(--apple-button-hover-gradient-end));
         }
 
         .features-section {
@@ -396,7 +399,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5); /* Фон остается размытым */
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             z-index: 999;
@@ -415,7 +418,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(1);
-            background-color: rgb(44, 44, 46); /* Убрана прозрачность */
+            background-color: rgb(44, 44, 46); /* Полностью непрозрачный контейнер */
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -457,14 +460,15 @@
             font-size: 0.95em;
             font-weight: 500;
             border-radius: 8px;
-            background-color: var(--apple-button-bg);
+            background: linear-gradient(to bottom, var(--apple-button-gradient-start), var(--apple-button-gradient-end));
             color: var(--apple-text-primary);
             text-decoration: none;
-            transition: background-color 0.2s ease;
+            transition: background 0.2s ease;
+            border: none;
         }
 
         .donation-notification .donation-button:hover {
-            background-color: var(--apple-button-hover-bg);
+            background: linear-gradient(to bottom, var(--apple-button-hover-gradient-start), var(--apple-button-hover-gradient-end));
         }
 
         .close-button {
@@ -706,7 +710,7 @@
                 'feature_security_title': 'Complete Security & Anonymity',
                 'feature_security_desc': 'Browse, stream, and communicate with ultimate peace of mind. Our VPN encrypts your connection, masks your IP address, and adheres to a strict no-logs policy, ensuring your online activities remain private and secure from prying eyes.',
                 'feature_speed_title': 'Unrivaled Quality & Speed',
-                'feature_speed_desc': 'Powered by our global network and optimized infrastructure (including Cloudflare and Fastly integrations), LioraCloud Free VPN delivers consistently high speeds for seamless Browse, HD streaming, and rapid downloads, no matter where you are.',
+                'feature_speed_desc': 'Powered by our global network and optimized infrastructure (including Cloudflare and Fastly integrations), LioraCloud Free VPN delivers consistently high speeds for seamless browsing, HD streaming, and rapid downloads, no matter where you are.',
                 'feature_free_title': 'Truly Free, Forever',
                 'feature_free_desc': 'We believe everyone deserves secure internet access. LioraCloud\'s Free VPN is genuinely free, with no hidden fees, bandwidth limits, or annoying ads. Enjoy premium VPN features without ever reaching for your wallet.',
                 'footer_support_title': 'Support',
@@ -801,7 +805,7 @@
                 'status_page_link': 'Страница статуса',
                 'lioracloud_logo_text': 'LioraCloud',
                 'hero_title': 'Ваш Интернет, переосмысление. Абсолютно бесплатно.',
-                'hero_subtitle': 'Доступ к открытому интернету с бесплатным VPN от LioraCloud. Безопасность, скорость и цифровая свобода.',
+                'hero_subtitle': 'Получите доступ к открытому Интернету с бесплатным VPN от LioraCloud. Безопасность, скорость и цифровая свобода.',
                 'cta_button': 'Получить Ваш Бесплатный VPN Сейчас',
                 'feature_security_title': 'Полная безопасность и анонимность',
                 'feature_security_desc': 'Наш VPN шифрует ваше соединение, маскирует IP и не ведет логи. Ваша онлайн-активность приватна и защищена.',
@@ -854,7 +858,7 @@
                 'hero_subtitle': 'Acceda a internet abierto con la VPN gratuita de LioraCloud. Seguridad inigualable, velocidades rápidas y libertad digital.',
                 'cta_button': 'Obtenga Su VPN Gratuita Ahora',
                 'feature_security_title': 'Seguridad y anonimato completos',
-                'feature_security_desc': 'Nuestra VPN encripta su conexión, oculta su IP y no guarda registros. Sus actividades online permanecen privadas y seguras.',
+                'feature_security_desc': 'Nuestra VPN encripta su conexión, oculta su IP y no guarda registros. Sus actividades en línea permanecen privadas y seguras.',
                 'feature_speed_title': 'Calidad y velocidad inigualables',
                 'feature_speed_desc': 'Impulsada por nuestra red global, la VPN gratuita de LioraCloud ofrece altas velocidades para navegación, streaming y descargas fluidas.',
                 'feature_free_title': 'Verdaderamente gratis, para siempre',
