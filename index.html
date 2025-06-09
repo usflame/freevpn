@@ -66,11 +66,11 @@
             left: 0;
             width: 150vw;
             height: 150vh;
-            background: linear-gradient(45deg, rgba(0, 122, 255, 0.2), rgba(88, 86, 214, 0.2), rgba(175, 82, 222, 0.2));
+            background: linear-gradient(45deg, rgba(0, 122, 255, 0.4), rgba(88, 86, 214, 0.4), rgba(175, 82, 222, 0.4));
             background-size: 300% 300%;
             animation: gradientAnimation 30s ease infinite;
             z-index: -1;
-            filter: blur(200px);
+            filter: blur(250px);
             opacity: 0.8;
         }
 
@@ -415,7 +415,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(1);
-            background-color: rgba(44, 44, 46, 0.85);
+            background-color: rgb(44, 44, 46); /* Убрана прозрачность */
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -552,12 +552,12 @@
                 padding: 10px 15px;
             }
             .donation-notification {
-                bottom: unset; /* Remove bottom */
-                right: unset; /* Remove right */
+                bottom: unset;
+                right: unset;
                 left: 50%;
                 top: 50%;
-                transform: translate(-50%, -50%); /* Re-center for mobile */
-                max-width: 90%; /* Adjust max-width for smaller screens */
+                transform: translate(-50%, -50%);
+                max-width: 90%;
             }
             .donation-notification p {
                 font-size: 1em;
